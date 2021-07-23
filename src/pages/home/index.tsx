@@ -4,8 +4,10 @@ import googleIconImg from "../../assets/images/google-icon.svg";
 
 import { Input, Button } from "../../components";
 
+import "./home.scss";
+
 export const Home = () => (
-  <div>
+  <div className="page-auth">
     <aside>
       <img src={ilustrationImg} alt="imagem_login" />
       <strong>Toda pergunta tem uma resposta.</strong>
