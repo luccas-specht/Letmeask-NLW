@@ -1,13 +1,11 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes } from "react";
 
-type Props = {
-  type?: "button" | "submit" | "reset" | undefined;
-  children: ReactNode;
-  onClick: () => void;
-};
+import "./button.scss";
 
-export const Button = ({ type, children, onClick }: Props) => (
-  <button type={type} onClick={onClick}>
+type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const Button = ({ type, children, onClick, ...props }: Props) => (
+  <button className="button" type={type} onClick={onClick} {...props}>
     {children}
   </button>
 );

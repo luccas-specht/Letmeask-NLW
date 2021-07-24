@@ -14,20 +14,21 @@ export const Home = () => (
       <p>Aprenda e compartilhe conhecimento com outras pessoas</p>
     </aside>
     <main>
-      <div>
+      <div className="main-content">
         <img src={logoImg} alt="Letmeask" />
-        <button>
+        <button className="create-room">
           <img src={googleIconImg} alt="logo do google" />
+          Crie sua sala com o Google
         </button>
-        <div>ou entre em uma sala</div>
+        <div className="separator">ou entre em uma sala</div>
         <form>
           <Input
-            value={{}}
+            value={""}
             onChange={() => {}}
             placeholder="Digite o código da sala"
           />
           <Button type="submit" onClick={() => {}}>
-            Entra na sala
+            Entrar na sala
           </Button>
         </form>
       </div>
