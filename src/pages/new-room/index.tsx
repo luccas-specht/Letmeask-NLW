@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import logoImg from "../../assets/images/logo.svg";
 import { Input, Button, AsideBanner } from "../../components";
+import logoImg from "../../assets/images/logo.svg";
 
 import "./room.scss";
 
