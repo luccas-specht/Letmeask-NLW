@@ -1,7 +1,3 @@
-import { Home } from "./pages";
+import { Router } from "./routers/router";
 
-function App() {
-  return <Home />;
-}
-
-export default App;
+export const App = () => <Router />;
