@@ -3,11 +3,11 @@ import { ReactNode } from "react";
 type Props = {
   type?: "button" | "submit" | "reset" | undefined;
   children: ReactNode;
-  onCLick: () => void;
+  onClick: () => void;
 };
 
-export const Button = ({ type, children, onCLick }: Props) => (
-  <button type={type} onClick={onCLick}>
+export const Button = ({ type, children, onClick }: Props) => (
+  <button type={type} onClick={onClick}>
     {children}
   </button>
 );

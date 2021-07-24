@@ -26,7 +26,7 @@ export const Home = () => (
             onChange={() => {}}
             placeholder="Digite o código da sala"
           />
-          <Button type="submit" onCLick={() => {}}>
+          <Button type="submit" onClick={() => {}}>
             Entra na sala
           </Button>
         </form>
