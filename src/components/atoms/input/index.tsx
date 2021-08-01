@@ -2,7 +2,7 @@ import "./input.scss";
 
 type Props = {
   value: any;
-  onChange: () => void;
+  onChange: (event: any) => void;
   placeholder: string;
 };
 
