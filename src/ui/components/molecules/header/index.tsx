@@ -1,14 +1,14 @@
-import { useParams } from 'react-router-dom'
-
 import { RoomCode } from '../../atoms'
 
 import logoImg from '../../../assets/images/logo.svg'
 
 import './header.scss'
 
-export const Header = () => {
-  const { id } = useParams<{id: string}>()
+type Props = {
+  id: string;
+}
 
+export const Header = ({id}: Props) => {
   return (
     <header className="header">
       <div className="header__content">
