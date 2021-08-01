@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import "./services/firebase";
 
-import "./styles/global.scss";
+import "./ui/styles/global.scss";
 
 ReactDOM.render(
   <React.StrictMode>

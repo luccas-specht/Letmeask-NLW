@@ -4,11 +4,11 @@ import { useHistory } from "react-router-dom";
 import logoImg from "../../assets/images/logo.svg";
 import googleIconImg from "../../assets/images/google-icon.svg";
 
-import { useAuth } from "../../hooks";
+import { useAuth } from "../../../hooks";
 import { Input, Button, AsideBanner } from "../../components";
 
 import "./home.scss";
-import { database } from "../../services/firebase";
+import { database } from "../../../services/firebase";
 
 
 export const Home = () => {

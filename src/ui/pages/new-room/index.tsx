@@ -2,8 +2,8 @@ import { FormEvent, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { Input, Button, AsideBanner } from "../../components";
-import { useAuth } from "../../hooks";
-import { database } from "../../services/firebase";
+import { useAuth } from "../../../hooks";
+import { database } from "../../../services/firebase";
 
 import logoImg from "../../assets/images/logo.svg";
 
