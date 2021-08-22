@@ -1,17 +1,15 @@
-import copyImg from '../../../assets/images/copy.svg';
+import copyImg from "../../../assets/images/copy.svg";
 
-import './room-code.scss'
+import "./style.scss";
 
-type Props ={
+type Props = {
   code: string;
-}
+};
 
-
-export const RoomCode = ({code}: Props) => {
-
+export const RoomCode = ({ code }: Props) => {
   const handleCopyRoomCodeToClipboard = () => {
-    navigator.clipboard.writeText(code)
-  }
+    navigator.clipboard.writeText(code);
+  };
 
   return (
     <button className="room-code" onClick={handleCopyRoomCodeToClipboard}>
@@ -20,5 +18,5 @@ export const RoomCode = ({code}: Props) => {
       </div>
       <span>Sala {code}</span>
     </button>
-  )
-}
+  );
+};

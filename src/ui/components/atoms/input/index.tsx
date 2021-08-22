@@ -1,4 +1,4 @@
-import "./input.scss";
+import "./style.scss";
 
 type Props = {
   value: any;

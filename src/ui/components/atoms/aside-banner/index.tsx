@@ -1,6 +1,6 @@
 import ilustrationImg from "../../../assets/images/illustration.svg";
 
-import "./aside-banner.scss";
+import "./style.scss";
 
 type Props = {
   title?: string;
