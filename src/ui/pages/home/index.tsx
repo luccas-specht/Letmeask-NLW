@@ -1,13 +1,8 @@
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import logoImg from "../../assets/images/logo.svg";
-import googleIconImg from "../../assets/images/google-icon.svg";
-
+import { HomeTemplate } from "../../components";
 import { useAuth } from "../../../hooks";
-import { Input, Button, AsideBanner } from "../../components";
-
-import "./style.scss";
 import { database } from "../../../services/firebase";
 
 export const Home = () => {
@@ -17,9 +12,8 @@ export const Home = () => {
   const [roomCode, setRoomCode] = useState("");
 
   const handleCreateRow = async () => {
-    if (!user) {
-      await signInWithGoogle();
-    }
+    if (!user) await signInWithGoogle();
+
     push("/rooms/new");
   };
 
@@ -27,7 +21,6 @@ export const Home = () => {
     event.preventDefault();
 
     if (roomCode.trim() === "") return;
-
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
@@ -39,28 +32,11 @@ export const Home = () => {
   };
 
   return (
-    <div className="page-auth">
-      <AsideBanner />
-      <main>
-        <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
-          <button className="create-room" onClick={handleCreateRow}>
-            <img src={googleIconImg} alt="logo do google" />
-            Crie sua sala com o Google
-          </button>
-          <div className="separator">ou entre em uma sala</div>
-          <form onSubmit={handleJoinRoow}>
-            <Input
-              value={roomCode}
-              onChange={(event) => {
-                setRoomCode(event.target.value);
-              }}
-              placeholder="Digite o código da sala"
-            />
-            <Button type="submit">Entrar na sala</Button>
-          </form>
-        </div>
-      </main>
-    </div>
+    <HomeTemplate
+      roomCode={roomCode}
+      setRoomCode={setRoomCode}
+      handleJoinRoow={handleJoinRoow}
+      handleCreateRow={handleCreateRow}
+    />
   );
 };
