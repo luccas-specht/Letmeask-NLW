@@ -1,3 +1,5 @@
+import "./style.scss";
+
 type Props = {
   content: string;
   author: {
@@ -6,16 +8,14 @@ type Props = {
   };
 };
 
-export const Question = ({ author, content }: Props) => {
-  return (
-    <div className="question">
-      <p>{content}</p>
-      <footer>
-        <div className="user-info">
-          <img src={author.avatar} alt={author.name} />
-          <span>{author.name}</span>
-        </div>
-      </footer>
-    </div>
-  );
-};
+export const Question = ({ author, content }: Props) => (
+  <div className="question">
+    <p>{content}</p>
+    <footer>
+      <div className="user-info">
+        <img src={author.avatar} alt={author.name} />
+        <span>{author.name}</span>
+      </div>
+    </footer>
+  </div>
+);

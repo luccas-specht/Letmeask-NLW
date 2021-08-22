@@ -1,44 +1,18 @@
 import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { Button, Header } from "../../components";
-import { useAuth } from "../../../hooks";
+import { Button, Header, Question } from "../../components";
+import { useAuth, useRoom } from "../../../hooks";
 import { database } from "../../../services/firebase";
 
 import "./style.scss";
-import { useEffect } from "react";
-
-type FirebaseQuestion = Record<
-  string,
-  {
-    author: {
-      name: string;
-      avatar: string;
-    };
-    content: string;
-    isHighlighted: boolean;
-    isAnswer: boolean;
-  }
->;
-
-type Question = {
-  id: string;
-  author: {
-    name: string;
-    avatar: string;
-  };
-  content: string;
-  isHighlighted: boolean;
-  isAnswer: boolean;
-};
 
 export const Room = () => {
   const { user } = useAuth();
   const { id } = useParams<{ id: string }>();
+  const { questions, title } = useRoom(id);
 
   const [newQuestion, setNewQuestion] = useState("");
-  const [title, setTitle] = useState("");
-  const [questions, setQuestions] = useState([] as Question[]);
 
   const handleSendQuestion = async (event: FormEvent) => {
     event.preventDefault();
@@ -60,26 +34,6 @@ export const Room = () => {
     await database.ref(`rooms/${id}/questions`).push(question);
     setNewQuestion("");
   };
-
-  useEffect(() => {
-    const roomRef = database.ref(`rooms/${id}`);
-    roomRef.on("value", (room) => {
-      const databaseRoom = room.val();
-      const fiebaseQuestions: FirebaseQuestion = databaseRoom.questions ?? {};
-      const parsedQuestions = Object.entries(fiebaseQuestions).map(
-        ([key, value]) => ({
-          id: key,
-          content: value.content,
-          author: value.author,
-          isAnswer: value.isAnswer,
-          isHighlighted: value.isHighlighted,
-        })
-      );
-
-      setTitle(databaseRoom.title);
-      setQuestions(parsedQuestions);
-    });
-  }, [id]);
 
   return (
     <>
@@ -112,6 +66,11 @@ export const Room = () => {
             </Button>
           </footer>
         </form>
+        <div className="question-list">
+          {questions.map(({ id, author, content }) => (
+            <Question key={id} author={author} content={content} />
+          ))}
+        </div>
       </main>
     </>
   );
